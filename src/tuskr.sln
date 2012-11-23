@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{E43564C3-4A6C-416D-B3FF-51D6EB5383EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{CF6C2627-DBA8-4046-AC1E-111F50CA43D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tuskr.Web", "Tuskr.Web\Tuskr.Web.csproj", "{18CF5B4D-AF10-4619-B224-854E2ADE6D31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tuskr.Web.Tests", "Tuskr.Web.Tests\Tuskr.Web.Tests.csproj", "{EEE56696-2C51-438D-8B04-A5BC8DFE21E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tuskr.Data.Entities", "Tuskr.Data.Entities\Tuskr.Data.Entities.csproj", "{E2D19331-0AAF-4533-9970-B2BC0D01E998}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tuskr.Data.Infrastructure", "Tuskr.Data.Infrastructure\Tuskr.Data.Infrastructure.csproj", "{F62B27D7-EC2D-412C-8E6E-2BD0311E2640}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tuskr.Data.NHibernate", "Tuskr.Data.NHibernate\Tuskr.Data.NHibernate.csproj", "{650DB23A-3AC5-43E7-8BF9-BBBBD806B377}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tuskr.Data.NHibernate.Tests", "Tuskr.Data.NHibernate.Tests\Tuskr.Data.NHibernate.Tests.csproj", "{CA00FE65-18B9-4351-B151-78CBBE54C97C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18CF5B4D-AF10-4619-B224-854E2ADE6D31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18CF5B4D-AF10-4619-B224-854E2ADE6D31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18CF5B4D-AF10-4619-B224-854E2ADE6D31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18CF5B4D-AF10-4619-B224-854E2ADE6D31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEE56696-2C51-438D-8B04-A5BC8DFE21E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEE56696-2C51-438D-8B04-A5BC8DFE21E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEE56696-2C51-438D-8B04-A5BC8DFE21E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEE56696-2C51-438D-8B04-A5BC8DFE21E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2D19331-0AAF-4533-9970-B2BC0D01E998}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2D19331-0AAF-4533-9970-B2BC0D01E998}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2D19331-0AAF-4533-9970-B2BC0D01E998}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2D19331-0AAF-4533-9970-B2BC0D01E998}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F62B27D7-EC2D-412C-8E6E-2BD0311E2640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F62B27D7-EC2D-412C-8E6E-2BD0311E2640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F62B27D7-EC2D-412C-8E6E-2BD0311E2640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F62B27D7-EC2D-412C-8E6E-2BD0311E2640}.Release|Any CPU.Build.0 = Release|Any CPU
+		{650DB23A-3AC5-43E7-8BF9-BBBBD806B377}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{650DB23A-3AC5-43E7-8BF9-BBBBD806B377}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{650DB23A-3AC5-43E7-8BF9-BBBBD806B377}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{650DB23A-3AC5-43E7-8BF9-BBBBD806B377}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA00FE65-18B9-4351-B151-78CBBE54C97C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA00FE65-18B9-4351-B151-78CBBE54C97C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA00FE65-18B9-4351-B151-78CBBE54C97C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA00FE65-18B9-4351-B151-78CBBE54C97C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E2D19331-0AAF-4533-9970-B2BC0D01E998} = {E43564C3-4A6C-416D-B3FF-51D6EB5383EF}
+		{F62B27D7-EC2D-412C-8E6E-2BD0311E2640} = {E43564C3-4A6C-416D-B3FF-51D6EB5383EF}
+		{650DB23A-3AC5-43E7-8BF9-BBBBD806B377} = {E43564C3-4A6C-416D-B3FF-51D6EB5383EF}
+		{CA00FE65-18B9-4351-B151-78CBBE54C97C} = {E43564C3-4A6C-416D-B3FF-51D6EB5383EF}
+		{18CF5B4D-AF10-4619-B224-854E2ADE6D31} = {CF6C2627-DBA8-4046-AC1E-111F50CA43D5}
+		{EEE56696-2C51-438D-8B04-A5BC8DFE21E9} = {CF6C2627-DBA8-4046-AC1E-111F50CA43D5}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Tuskr.Web.Models.TaskModel>
+
+@{
+    ViewBag.Title = "all tasks";
+}
+
+<h2>all tasks</h2>
+<ol>
+    @foreach (var t in Model)
+    {
+        <li>@t.Name</li>
+    }
+</ol>
