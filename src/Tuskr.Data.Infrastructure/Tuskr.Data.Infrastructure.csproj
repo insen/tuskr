@@ -39,8 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IReadOnlyRepository.cs" />
-    <Compile Include="IRepository.cs" />
+    <Compile Include="IReadOnlyRepo.cs" />
+    <Compile Include="IRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -10,9 +10,9 @@ namespace Tuskr.Web.Controllers
 {
     public class TaskController : Controller
     {
-        private readonly IRepository<Task> _tasks;
+        private readonly IRepo<Task> _tasks;
         
-        public TaskController(IRepository<Task> repo)
+        public TaskController(IRepo<Task> repo)
         {
             this._tasks = repo;
         }

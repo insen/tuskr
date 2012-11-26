@@ -35,6 +35,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NHibernate.3.3.2.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -52,6 +59,28 @@
   <ItemGroup>
     <Compile Include="NHibernateTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tuskr.Data.Entities\Tuskr.Data.Entities.csproj">
+      <Project>{E2D19331-0AAF-4533-9970-B2BC0D01E998}</Project>
+      <Name>Tuskr.Data.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tuskr.Data.Infrastructure\Tuskr.Data.Infrastructure.csproj">
+      <Project>{F62B27D7-EC2D-412C-8E6E-2BD0311E2640}</Project>
+      <Name>Tuskr.Data.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tuskr.Data.NHibernate\Tuskr.Data.NHibernate.csproj">
+      <Project>{650DB23A-3AC5-43E7-8BF9-BBBBD806B377}</Project>
+      <Name>Tuskr.Data.NHibernate</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="hibernate.cfg.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

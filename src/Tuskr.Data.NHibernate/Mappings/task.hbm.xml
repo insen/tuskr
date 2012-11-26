@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="Tuskr.Data.Entities" assembly="Tuskr.Data.Entities">
+  <class name="Task" optimistic-lock="dirty" dynamic-update="true" table="T_TaskData">
+    <id name="Id" column="TD_Id" >
+      <generator class="native" />
+    </id>
+    <property name="Name" column="TD_Name" length="50" not-null="true" />
+    <property name="Description" column="TD_Desc" length="2000" />
+    <property name="StartDate" column="TD_Start" />
+    <property name="Duration" column="TD_Duration" />
+    <property name="Status" column="TD_Status" />
+  </class>
+</hibernate-mapping>

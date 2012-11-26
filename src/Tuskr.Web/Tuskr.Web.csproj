@@ -292,11 +292,11 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DomainModel\Tuskr.Data.Entities.csproj">
+    <ProjectReference Include="..\Tuskr.Data.Entities\Tuskr.Data.Entities.csproj">
       <Project>{e2d19331-0aaf-4533-9970-b2bc0d01e998}</Project>
       <Name>Tuskr.Data.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Infrastructure\Tuskr.Data.Infrastructure.csproj">
+    <ProjectReference Include="..\Tuskr.Data.Infrastructure\Tuskr.Data.Infrastructure.csproj">
       <Project>{f62b27d7-ec2d-412c-8e6e-2bd0311e2640}</Project>
       <Name>Tuskr.Data.Infrastructure</Name>
     </ProjectReference>

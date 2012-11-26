@@ -35,6 +35,9 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="NSubstitute">
+      <HintPath>..\packages\NSubstitute.1.4.3.0\lib\NET40\NSubstitute.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -93,6 +96,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\TaskControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
@@ -103,6 +107,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Tuskr.Data.Entities\Tuskr.Data.Entities.csproj">
+      <Project>{E2D19331-0AAF-4533-9970-B2BC0D01E998}</Project>
+      <Name>Tuskr.Data.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tuskr.Data.Infrastructure\Tuskr.Data.Infrastructure.csproj">
+      <Project>{F62B27D7-EC2D-412C-8E6E-2BD0311E2640}</Project>
+      <Name>Tuskr.Data.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tuskr.Data.NHibernate\Tuskr.Data.NHibernate.csproj">
+      <Project>{650db23a-3ac5-43e7-8bf9-bbbbd806b377}</Project>
+      <Name>Tuskr.Data.NHibernate</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tuskr.Web\Tuskr.Web.csproj">
       <Project>{18CF5B4D-AF10-4619-B224-854E2ADE6D31}</Project>
       <Name>Tuskr.Web</Name>

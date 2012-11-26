@@ -48,22 +48,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Repository.cs" />
+    <Compile Include="RepoBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="NHSessionHelper.cs" />
     <Compile Include="TaskRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DomainModel\Tuskr.Data.Entities.csproj">
+    <ProjectReference Include="..\Tuskr.Data.Entities\Tuskr.Data.Entities.csproj">
       <Project>{E2D19331-0AAF-4533-9970-B2BC0D01E998}</Project>
       <Name>Tuskr.Data.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Infrastructure\Tuskr.Data.Infrastructure.csproj">
+    <ProjectReference Include="..\Tuskr.Data.Infrastructure\Tuskr.Data.Infrastructure.csproj">
       <Project>{F62B27D7-EC2D-412C-8E6E-2BD0311E2640}</Project>
       <Name>Tuskr.Data.Infrastructure</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\task.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,49 +6,64 @@ using Tuskr.Data.Infrastructure;
 
 namespace Tuskr.Data.NHibernate
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class RepoBase<T> : IRepo<T> where T : class
     {
         private readonly ISession _session;
 
-        public Repository(ISession session)
+        public RepoBase(ISession session)
         {
             _session = session;
         }
 
         public bool Add(T entity)
         {
-            _session.Save(entity);
-            return true;
+            //using (_session.BeginTransaction())
+            {
+                _session.Save(entity);
+                return true;
+            }
         }
 
         public bool Add(IEnumerable<T> items)
         {
-            foreach (T item in items)
+            using (_session.BeginTransaction())
             {
-                _session.Save(item);
+                foreach (T item in items)
+                {
+                    _session.Save(item);
+                }
+                return true;
             }
-            return true;
         }
 
         public bool Update(T entity)
         {
-            _session.Update(entity);
-            return true;
+            using (_session.BeginTransaction())
+            {
+                _session.Update(entity);
+                return true;
+            }
         }
 
         public bool Delete(T entity)
         {
-            _session.Delete(entity);
-            return true;
+            using (_session.BeginTransaction())
+            {
+                _session.Delete(entity);
+                return true;    
+            }
         }
 
         public bool Delete(IEnumerable<T> entities)
         {
-            foreach (T entity in entities)
+            using (_session.BeginTransaction())
             {
-                _session.Delete(entity);
+                foreach (T entity in entities)
+                {
+                    _session.Delete(entity);
+                }
+                return true;
             }
-            return true;
         }
 
         public T FindBy(int id)
