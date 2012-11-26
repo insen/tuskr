@@ -6,7 +6,7 @@ using Tuskr.Data.Entities;
 namespace Tuskr.Data.NHibernate.Tests
 {
     [TestClass]
-    public class NHibernateTests
+    public class TaskRepositoryTests
     {
         [TestMethod]
         public void AddTaskIsOk()
@@ -14,15 +14,21 @@ namespace Tuskr.Data.NHibernate.Tests
             var task = new Task {Name = "a task at last", StartDate = DateTime.Now.AddDays(1).Date};
 
             var nhSession = NHSessionHelper.OpenSession();
-            ITransaction trans;
 
-            using ( trans = nhSession.BeginTransaction())
+            using (ITransaction trans = nhSession.BeginTransaction())
             {
-                var trepo = new TaskRepository(nhSession);
-                trepo.Add(task);
-                trans.Commit();
+                bool isOk;
+                try
+                {
+                    var trepo = new TaskRepository(nhSession);
+                    isOk = trepo.Add(task);
+                    if (isOk) trans.Commit();
+                }
+                catch (Exception)
+                {
+                    trans.Rollback();
+                }
             }
-
         }
     }
 }

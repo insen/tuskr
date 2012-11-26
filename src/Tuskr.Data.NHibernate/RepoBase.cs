@@ -17,53 +17,38 @@ namespace Tuskr.Data.NHibernate
 
         public bool Add(T entity)
         {
-            //using (_session.BeginTransaction())
-            {
-                _session.Save(entity);
-                return true;
-            }
+            _session.Save(entity);
+            return true;
         }
 
         public bool Add(IEnumerable<T> items)
         {
-            using (_session.BeginTransaction())
+            foreach (T item in items)
             {
-                foreach (T item in items)
-                {
-                    _session.Save(item);
-                }
-                return true;
+                _session.Save(item);
             }
+            return true;
         }
 
         public bool Update(T entity)
         {
-            using (_session.BeginTransaction())
-            {
-                _session.Update(entity);
-                return true;
-            }
+            _session.Update(entity);
+            return true;
         }
 
         public bool Delete(T entity)
         {
-            using (_session.BeginTransaction())
-            {
-                _session.Delete(entity);
-                return true;    
-            }
+            _session.Delete(entity);
+            return true;
         }
 
         public bool Delete(IEnumerable<T> entities)
         {
-            using (_session.BeginTransaction())
+            foreach (T entity in entities)
             {
-                foreach (T entity in entities)
-                {
-                    _session.Delete(entity);
-                }
-                return true;
+                _session.Delete(entity);
             }
+            return true;
         }
 
         public T FindBy(int id)
