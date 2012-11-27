@@ -23,5 +23,6 @@ namespace Tuskr.Data.NHibernate
         {
             return SessionFactory.OpenSession();
         }
+
     }
 }

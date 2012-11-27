@@ -10,9 +10,9 @@ namespace Tuskr.Data.NHibernate
     {
         private readonly ISession _session;
 
-        public RepoBase(ISession session)
+        public RepoBase(ISessionFactory session)
         {
-            _session = session;
+            _session = session.OpenSession();
         }
 
         public bool Add(T entity)

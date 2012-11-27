@@ -14,13 +14,14 @@ namespace Tuskr.Data.NHibernate.Tests
             var task = new Task {Name = "a task at last", StartDate = DateTime.Now.AddDays(1).Date};
 
             var nhSession = NHSessionHelper.OpenSession();
+            var nhSessFac = NHSessionHelper.SessionFactory;
 
             using (ITransaction trans = nhSession.BeginTransaction())
             {
                 bool isOk;
                 try
                 {
-                    var trepo = new TaskRepository(nhSession);
+                    var trepo = new TaskRepository(nhSessFac);
                     isOk = trepo.Add(task);
                     if (isOk) trans.Commit();
                 }
