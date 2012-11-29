@@ -5,9 +5,35 @@
 }
 
 <h2>all tasks</h2>
-<ol>
-    @foreach (var t in Model)
-    {
-        <li>@t.Name</li>
-    }
-</ol>
+@*<ol>*@
+@*    @foreach (var t in Model)*@
+@*    {*@
+@*        <li>@t.Name</li>*@
+@*        <li>@t.Name</li>*@
+@*        <li>@t.Name</li>*@
+@*        <li>@t.Name</li>*@
+@*        <li>@t.Name</li>*@
+@*        <li>@t.Name</li>*@
+@*    }*@
+@*</ol>*@
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>StartDate</th>
+        <th>Duration</th>
+        <th>Status</th>
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>@item.Id</td>
+        <td>@item.Name</td>
+        <td>@item.Description</td>
+        <td>@item.StartDate</td>
+        <td>@item.Duration</td>
+        <td>@item.Status</td>
+    </tr>
+}
+</table>

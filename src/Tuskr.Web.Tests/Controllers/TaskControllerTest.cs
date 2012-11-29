@@ -17,7 +17,7 @@ namespace Tuskr.Web.Tests.Controllers
     {
 
         [TestMethod]
-        public void WhenTaskControllerGetAllIsCalledTasksAreReturned()
+        public void Can_Get_All_Tasks()
         {
             var repo = Substitute.For<IRepo<Task>>();
             repo.All().Returns(new[] {new Task{Name = "One"}}.AsQueryable());
@@ -34,7 +34,6 @@ namespace Tuskr.Web.Tests.Controllers
             var taskModels = tasks as TaskModel[] ?? tasks.ToArray();
             Assert.IsTrue(taskModels.Any());
             Assert.IsTrue((taskModels.First().Name == "One"));
-
         }
     }
 }

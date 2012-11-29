@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Tuskr.Web;
 using Tuskr.Web.Controllers;
 
 namespace Tuskr.Web.Tests.Controllers
@@ -13,7 +8,7 @@ namespace Tuskr.Web.Tests.Controllers
     public class HomeControllerTest
     {
         [TestMethod]
-        public void Index()
+        public void Index_Action_Returns_ViewResult_With_Message()
         {
             HomeController controller = new HomeController();
             ViewResult result = controller.Index() as ViewResult;
@@ -21,7 +16,7 @@ namespace Tuskr.Web.Tests.Controllers
         }
 
         [TestMethod]
-        public void About()
+        public void About_Action_Returns_ViewResult()
         {
             HomeController controller = new HomeController();
             ViewResult result = controller.About() as ViewResult;
@@ -29,7 +24,7 @@ namespace Tuskr.Web.Tests.Controllers
         }
 
         [TestMethod]
-        public void Contact()
+        public void Contact_Action_Returns_ViewResult()
         {
             HomeController controller = new HomeController();
             ViewResult result = controller.Contact() as ViewResult;

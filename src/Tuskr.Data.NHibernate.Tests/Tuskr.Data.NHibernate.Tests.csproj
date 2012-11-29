@@ -57,6 +57,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Infrastructure\AutoRollback.cs" />
+    <Compile Include="Infrastructure\Crud.cs" />
+    <Compile Include="Infrastructure\NhibernateTestBase.cs" />
     <Compile Include="TaskRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
