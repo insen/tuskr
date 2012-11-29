@@ -13,7 +13,7 @@ namespace Tuskr.Data.NHibernate.Tests
 //        {
 //            var task = new Task {Name = "a task at last", StartDate = DateTime.Now.AddDays(1).Date};
 //
-//            var nhSessFac = NHSessionHelper.SessionFactory;
+//            var nhSessFac = NHSessionProvider.SessionFactory;
 //            var nhSession = nhSessFac.OpenSession();
 //
 //            using (ITransaction trans = nhSession.BeginTransaction())

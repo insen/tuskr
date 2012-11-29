@@ -10,12 +10,4 @@ namespace Tuskr.Data.Entities
         public virtual int Duration { get; set; }
         public virtual TaskStatus Status { get; set; }
     }
-
-    public enum TaskStatus
-    {
-        Undefined = 0,
-        WaitStart = 1,
-        Active = 2,
-        Done = 3
-    }
 }

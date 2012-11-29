@@ -1,32 +1,12 @@
-﻿@model IEnumerable<Tuskr.Web.Models.TaskModel>
+﻿@using Tuskr.Web.Models
+@model IEnumerable<Tuskr.Web.Models.TaskModel>
 
 @{
     ViewBag.Title = "all tasks";
 }
 
-<h2>all tasks</h2>
-@*<ol>*@
-@*    @foreach (var t in Model)*@
-@*    {*@
-@*        <li>@t.Name</li>*@
-@*        <li>@t.Name</li>*@
-@*        <li>@t.Name</li>*@
-@*        <li>@t.Name</li>*@
-@*        <li>@t.Name</li>*@
-@*        <li>@t.Name</li>*@
-@*    }*@
-@*</ol>*@
-
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>StartDate</th>
-        <th>Duration</th>
-        <th>Status</th>
-    </tr>
-@foreach (var item in Model) {
+@helper RenderTask(TaskModel item) 
+{
     <tr>
         <td>@item.Id</td>
         <td>@item.Name</td>
@@ -36,4 +16,39 @@
         <td>@item.Status</td>
     </tr>
 }
+
+@helper RenderTasks(Func<TaskModel, bool> selector, string rowSetHeader)
+{
+    var pasts = Model.Where(selector).ToArray();
+    if (pasts.Any())
+    {
+        <tr id="past"><td colspan="6">@rowSetHeader</td></tr>
+
+        foreach (var item in pasts)
+        {
+            @RenderTask(item)
+        }
+    }
+}
+
+
+<table id="tasks">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>StartDate</th>
+            <th>Duration</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+    
+    @{
+        @RenderTasks(m => m.StartDate < DateTime.Now.Date, "BackLog Tasks")
+        @RenderTasks(m => m.StartDate == DateTime.Now.Date, "Tasks for today")
+        @RenderTasks(m => m.StartDate > DateTime.Now.Date, "Future Tasks")
+    }
+    </tbody>
 </table>
