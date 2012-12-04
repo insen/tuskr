@@ -40,7 +40,7 @@
     <constructor-arg ref="TaskRepo" />
   </object>
   
-  <object id="TaskRepo" type="Tuskr.Data.NHibernate.TaskRepository, Tuskr.Data.Nhibernate">
+  <object id="TaskRepo" type="Tuskr.Data.NHibernate.TaskRepository, Tuskr.Data.Nhibernate" singleton="false">
     <constructor-arg ref="SessionFactory" />
   </object>
 

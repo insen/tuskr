@@ -1,54 +1,107 @@
 ﻿@using Tuskr.Web.Models
-@model IEnumerable<Tuskr.Web.Models.TaskModel>
+@model IEnumerable<TaskModel>
 
 @{
     ViewBag.Title = "all tasks";
 }
 
-@helper RenderTask(TaskModel item) 
+
+@helper RenderTask(TaskModel item, string groupId, string id) 
 {
-    <tr>
-        <td>@item.Id</td>
-        <td>@item.Name</td>
-        <td>@item.Description</td>
-        <td>@item.StartDate</td>
-        <td>@item.Duration</td>
-        <td>@item.Status</td>
-    </tr>
+        <tr class="task-gp-content" id="@id" data-group-reference="@groupId">
+            <td class="bordered">@item.Id</td>
+            <td class="bordered">@item.Name</td>
+            <td class="bordered">@item.Description</td>
+            <td class="bordered">@item.StartDate</td>
+            <td class="bordered">@item.Duration</td>
+            <td class="bordered">@item.Status</td>
+        </tr>
 }
 
-@helper RenderTasks(Func<TaskModel, bool> selector, string rowSetHeader)
+@helper RenderTasks(Func<TaskModel, bool> selector, string headerText, string dataGroupName)
 {
-    var pasts = Model.Where(selector).ToArray();
-    if (pasts.Any())
+    var tasks = Model.Where(selector).ToArray();
+    if (tasks.Any())
     {
-        <tr id="past"><td colspan="6">@rowSetHeader</td></tr>
+        <tr class="task-gp-hdr" id="@dataGroupName" data-group-key="@dataGroupName">
+            <td colspan="6">@headerText</td>
+        </tr>
 
-        foreach (var item in pasts)
+        int i = 1;
+        foreach (var item in tasks)
         {
-            @RenderTask(item)
+            @RenderTask(item, dataGroupName , string.Concat(dataGroupName, i))
+            i++;
         }
     }
 }
+<style type="text/css">
+    .task-table {
+        width: 100%;
+        text-align: center;
+    }
 
+    .task-id {
+        display: table-column
+    }
 
-<table id="tasks">
+    .task-name {
+        width:10%
+    }
+
+    .task-Desc {
+        width:60%
+    }
+
+    .task-start {
+        width:10%
+    }
+
+    .task-duration {
+        width:10%
+    }
+
+    .task-stat {
+        width: 10%;
+    }
+
+    .bordered {
+        border: 1px solid black;
+    }
+</style>
+
+<table id="tasks" class="task-table bordered">
+    <colgroup>
+        <col class="task-id bordered"/>
+        <col class="task-name bordered" />
+        <col class="task-Desc bordered" />
+        <col class="task-start bordered" />
+        <col class="task-duration bordered" />
+        <col class="task-stat bordered"/>
+    </colgroup>
+
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>StartDate</th>
-            <th>Duration</th>
-            <th>Status</th>
+            <th class="bordered">Id</th>
+            <th class="bordered">Name</th>
+            <th class="bordered">Description</th>
+            <th class="bordered">StartDate</th>
+            <th class="bordered">Duration</th>
+            <th class="bordered">Status</th>
         </tr>
     </thead>
     <tbody>
     
-    @{
-        @RenderTasks(m => m.StartDate < DateTime.Now.Date, "BackLog Tasks")
-        @RenderTasks(m => m.StartDate == DateTime.Now.Date, "Tasks for today")
-        @RenderTasks(m => m.StartDate > DateTime.Now.Date, "Future Tasks")
-    }
+        @{
+            @RenderTasks(m => m.StartDate < DateTime.Now.Date, "BackLog Tasks", "Backlog")
+            @RenderTasks(m => m.StartDate == DateTime.Now.Date, "Tasks for today", "Current")
+            @RenderTasks(m => m.StartDate > DateTime.Now.Date, "Future Tasks", "Future")
+        }
     </tbody>
 </table>
+
+@section scripts
+{
+@*    <script src="/Scripts/jquery.dataTables.js" type="text/javascript"></script>*@
+    <script type="text/javascript" src="@Url.Content("/Scripts/View_Scripts/Task/alltasks.js")"></script>
+}
