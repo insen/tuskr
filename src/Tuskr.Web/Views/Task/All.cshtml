@@ -70,38 +70,39 @@
     }
 </style>
 
-<table id="tasks" class="task-table bordered">
-    <colgroup>
-        <col class="task-id bordered"/>
-        <col class="task-name bordered" />
-        <col class="task-Desc bordered" />
-        <col class="task-start bordered" />
-        <col class="task-duration bordered" />
-        <col class="task-stat bordered"/>
-    </colgroup>
+    <table id="tasks" class="task-table bordered">
+        <colgroup>
+            <col class="task-id bordered"/>
+            <col class="task-name bordered" />
+            <col class="task-Desc bordered" />
+            <col class="task-start bordered" />
+            <col class="task-duration bordered" />
+            <col class="task-stat bordered"/>
+        </colgroup>
 
-    <thead>
-        <tr>
-            <th class="bordered">Id</th>
-            <th class="bordered">Name</th>
-            <th class="bordered">Description</th>
-            <th class="bordered">StartDate</th>
-            <th class="bordered">Duration</th>
-            <th class="bordered">Status</th>
-        </tr>
-    </thead>
-    <tbody>
+        <thead>
+            <tr>
+                <th class="bordered">Id</th>
+                <th class="bordered">Name</th>
+                <th class="bordered">Description</th>
+                <th class="bordered">StartDate</th>
+                <th class="bordered">Duration</th>
+                <th class="bordered">Status</th>
+            </tr>
+        </thead>
+        <tbody>
     
-        @{
-            @RenderTasks(m => m.StartDate < DateTime.Now.Date, "BackLog Tasks", "Backlog")
-            @RenderTasks(m => m.StartDate == DateTime.Now.Date, "Tasks for today", "Current")
-            @RenderTasks(m => m.StartDate > DateTime.Now.Date, "Future Tasks", "Future")
-        }
-    </tbody>
-</table>
+            @{
+                @RenderTasks(m => m.StartDate < DateTime.Now.Date, "BackLog Tasks", "Backlog")
+                @RenderTasks(m => m.StartDate == DateTime.Now.Date, "Tasks for today", "Current")
+                @RenderTasks(m => m.StartDate > DateTime.Now.Date, "Future Tasks", "Future")
+            }
+        </tbody>
+    </table>
+    
+
 
 @section scripts
 {
-@*    <script src="/Scripts/jquery.dataTables.js" type="text/javascript"></script>*@
     <script type="text/javascript" src="@Url.Content("/Scripts/View_Scripts/Task/alltasks.js")"></script>
 }

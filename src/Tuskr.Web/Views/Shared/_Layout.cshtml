@@ -9,41 +9,42 @@
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
+        
         <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("tuskr", "Index", "Home")</p>
-                </div>
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                            <li>@Html.ActionLink("Tasks", "All", "Task")</li>
-                        </ul>
-                    </nav>
-                </div>
+            <div class="float-left">
+                <p class="site-title">@Html.ActionLink("tuskr", "Index", "Home")</p>
+            </div>
+            <div class="float-right">
+                <a href="@Url.Action("Index", "Home")">
+                    <img src="@Url.Content("~/Images/signup.jpg")" class="sign-up"/>
+                </a>
+                @*@Html.ActionLink("Home", "Index", new {Controller="Home", Action="Index"}, new { @class="classname float-right" })*@
+            </div>
+            <div class="clear-float">
+                <nav>
+                    <ul id="menu">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Tasks", "All", "Task")</li>
+                    </ul>
+                </nav>
             </div>
         </header>
+
+        
         <div id="body">
             @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
-            </section>
+            @RenderBody()
         </div>
+        
+        
         <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - tuskr</p>
-                </div>
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year - tuskr</p>
             </div>
         </footer>
 
         @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/")
         @RenderSection("scripts", required: false)
     </body>
 </html>
