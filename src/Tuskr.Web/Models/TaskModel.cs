@@ -27,7 +27,7 @@ namespace Tuskr.Web.Models
             Id = task.Id;
         }
 
-        private TaskModel()
+        public TaskModel()
         {
         }
 

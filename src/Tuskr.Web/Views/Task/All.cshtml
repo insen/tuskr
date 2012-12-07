@@ -47,7 +47,6 @@
             <a href="#">
                 <img src="@Url.Content("~/Images/edit.png")" class="icon" />
             </a>
-       
         </nav>
     </div>
 }
@@ -58,7 +57,6 @@
     <script type="text/javascript" src="@Url.Content("/Scripts/View_Scripts/Task/AddTask.js")"></script>
     
 }
-
 
 <table id="tasks" class="task-table bordered">
     <colgroup>
@@ -90,8 +88,7 @@
     </tbody>
 </table>
 
-
-<div id="template-add" class="outline">
+<div id="template-add" class="hide outline">
     @using (Html.BeginForm("AddTask", "Task", null))
         {
             var t = TaskModel.Empty();
@@ -101,23 +98,23 @@
              
                 <div class="input">
                     <label class="input-label">Task Name:</label>
-                    <input class="input-elem" type="text" id="task-name"/><br/>
+                    <input class="input-elem" type="text" id="task-name" name="Name"/><br/>
                 </div>
                 <div class="input">
                     <label class="input-label">Task Description:</label>
-                    <input class="input-elem" type="text" id="task-desc"/><br/>
+                    <input class="input-elem" type="text" id="task-desc" name="Description"/><br/>
                 </div>
                 <div class="input">
                     <label class="input-label">Task Starting At:</label>
-                    <input class="input-elem" type="text" id="task-start"/><br />
+                    <input class="input-elem" type="text" id="task-start" name="StartDate"/><br />
                 </div>
                 <div class="input">
                     <label class="input-label">Task Duration:</label>
-                    <input class="input-elem" type="text" id="task-duration"/><br/>
+                    <input class="input-elem" type="text" id="task-duration" name="Duration"/><br/>
                 </div>
                 <div class="input">
                     <label class="input-label">Task Status:</label>
-                    <input class="input-elem" type="text" id="task-status"/><br/>
+                    <input class="input-elem" type="text" id="task-status" name="Status"/><br/>
                 </div>
             </fieldset>
             <input type="submit" id="submit" value="submit"/>
