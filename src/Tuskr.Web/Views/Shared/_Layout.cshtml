@@ -9,42 +9,52 @@
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
+        <div id="dialog" class="hide"></div>
         
-        <header>
-            <div class="float-left">
-                <p class="site-title">@Html.ActionLink("tuskr", "Index", "Home")</p>
-            </div>
-            <div class="float-right">
-                <a href="@Url.Action("Index", "Home")">
-                    <img src="@Url.Content("~/Images/signup.jpg")" class="sign-up"/>
-                </a>
-                @*@Html.ActionLink("Home", "Index", new {Controller="Home", Action="Index"}, new { @class="classname float-right" })*@
-            </div>
-            <div class="clear-float">
-                <nav>
-                    <ul id="menu">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Tasks", "All", "Task")</li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+        <div class="hd bgclr outline">
+            <header>
+                <div class="f-left outline">
+                    <p>@Html.ActionLink("tuskr", "Index", "Home", null, new {@class="site-title"})</p>
+                </div>
+                <div class="f-right outline">
+                    <a href="@Url.Action("Index", "Home")">
+                        <img src="@Url.Content("~/Images/signup.jpg")" class="icon"/>
+                    </a>
+                </div>
+                <div class="f-clear outline">
+                    <nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Tasks", "All", "Task")</li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+        </div>
 
         
-        <div id="body" class="body">
-            @RenderSection("featured", required: false)
-            @RenderBody()
+        <div id="body" class="bd bgclr outline">
+            <div class="b-hdr outline">
+                @RenderSection("featured", required: false)
+            </div>
+            <div class="b-data outline">
+                @RenderBody()
+            </div>
         </div>
         
         
-        <footer>
+        <footer class="ft bgclr outline">
             <div class="float-left">
                 <p>&copy; @DateTime.Now.Year - tuskr</p>
             </div>
         </footer>
 
         @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/Scripts/jquery-ui-1.8.20.js")
         @Scripts.Render("~/")
         @RenderSection("scripts", required: false)
     </body>
+    
+
+
 </html>

@@ -23,5 +23,15 @@ namespace Tuskr.Web.Controllers
             var vmodels = entities.Select(e => new TaskModel(e));
             return View(vmodels);
         }
+
+        public ActionResult AddView()
+        {
+            return Content("");
+        }
+
+        public ActionResult AddTask()
+        {
+            return Content("");
+        }
     }
 }

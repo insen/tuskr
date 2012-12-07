@@ -26,5 +26,14 @@ namespace Tuskr.Web.Models
             Status = task.Status;
             Id = task.Id;
         }
+
+        private TaskModel()
+        {
+        }
+
+        public static TaskModel Empty()
+        {
+            return new TaskModel();
+        }
     }
 }

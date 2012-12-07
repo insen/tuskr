@@ -5,20 +5,21 @@
     ViewBag.Title = "all tasks";
 }
 
+@helper RenderCell(object item){ <td class="bordered">@item</td>}
 
-@helper RenderTask(TaskModel item, string groupId, string id) 
+@helper RenderDetailRow(TaskModel item, string groupId, string id) 
 {
-        <tr class="task-gp-content" id="@id" data-group-reference="@groupId">
-            <td class="bordered">@item.Id</td>
-            <td class="bordered">@item.Name</td>
-            <td class="bordered">@item.Description</td>
-            <td class="bordered">@item.StartDate</td>
-            <td class="bordered">@item.Duration</td>
-            <td class="bordered">@item.Status</td>
-        </tr>
+    <tr class="task-gp-content" id="@id" data-group-reference="@groupId">
+        @RenderCell(item.Id)
+        @RenderCell(item.Name)
+        @RenderCell(item.Description)
+        @RenderCell(item.StartDate)
+        @RenderCell(item.Duration)
+        @RenderCell(item.Status)
+    </tr>
 }
 
-@helper RenderTasks(Func<TaskModel, bool> selector, string headerText, string dataGroupName)
+@helper RenderHeaderAndDetailRows(Func<TaskModel, bool> selector, string headerText, string dataGroupName)
 {
     var tasks = Model.Where(selector).ToArray();
     if (tasks.Any())
@@ -30,79 +31,97 @@
         int i = 1;
         foreach (var item in tasks)
         {
-            @RenderTask(item, dataGroupName , string.Concat(dataGroupName, i))
+            @RenderDetailRow(item, dataGroupName , string.Concat(dataGroupName, i))
             i++;
         }
     }
 }
-<style type="text/css">
-    .task-table {
-        width: 100%;
-        text-align: center;
-    }
 
-    .task-id {
-        display: table-column
-    }
-
-    .task-name {
-        width:10%
-    }
-
-    .task-Desc {
-        width:60%
-    }
-
-    .task-start {
-        width:10%
-    }
-
-    .task-duration {
-        width:10%
-    }
-
-    .task-stat {
-        width: 10%;
-    }
-
-    .bordered {
-        border: 1px solid black;
-    }
-</style>
-
-    <table id="tasks" class="task-table bordered">
-        <colgroup>
-            <col class="task-id bordered"/>
-            <col class="task-name bordered" />
-            <col class="task-Desc bordered" />
-            <col class="task-start bordered" />
-            <col class="task-duration bordered" />
-            <col class="task-stat bordered"/>
-        </colgroup>
-
-        <thead>
-            <tr>
-                <th class="bordered">Id</th>
-                <th class="bordered">Name</th>
-                <th class="bordered">Description</th>
-                <th class="bordered">StartDate</th>
-                <th class="bordered">Duration</th>
-                <th class="bordered">Status</th>
-            </tr>
-        </thead>
-        <tbody>
-    
-            @{
-                @RenderTasks(m => m.StartDate < DateTime.Now.Date, "BackLog Tasks", "Backlog")
-                @RenderTasks(m => m.StartDate == DateTime.Now.Date, "Tasks for today", "Current")
-                @RenderTasks(m => m.StartDate > DateTime.Now.Date, "Future Tasks", "Future")
-            }
-        </tbody>
-    </table>
-    
-
+@section featured
+{
+    <div class="task-menu outline">
+        <nav>
+            <a href="#">
+                <img src="@Url.Content("~/Images/add.png")" class="icon" />
+            </a>
+            <a href="#">
+                <img src="@Url.Content("~/Images/edit.png")" class="icon" />
+            </a>
+       
+        </nav>
+    </div>
+}
 
 @section scripts
 {
     <script type="text/javascript" src="@Url.Content("/Scripts/View_Scripts/Task/alltasks.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/View_Scripts/Task/AddTask.js")"></script>
+    
 }
+
+
+<table id="tasks" class="task-table bordered">
+    <colgroup>
+        <col class="task-id bordered" />
+        <col class="task-name bordered" />
+        <col class="task-Desc bordered" />
+        <col class="task-start bordered" />
+        <col class="task-duration bordered" />
+        <col class="task-stat bordered" />
+    </colgroup>
+
+    <thead>
+        <tr>
+            <th class="bordered">Id</th>
+            <th class="bordered">Name</th>
+            <th class="bordered">Description</th>
+            <th class="bordered">StartDate</th>
+            <th class="bordered">Duration</th>
+            <th class="bordered">Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @{
+            @RenderHeaderAndDetailRows(m => m.StartDate < DateTime.Now.Date, "BackLog Tasks", "Backlog")
+            @RenderHeaderAndDetailRows(m => m.StartDate == DateTime.Now.Date, "Tasks for today", "Current")
+            @RenderHeaderAndDetailRows(m => m.StartDate > DateTime.Now.Date, "Future Tasks", "Future")
+        }
+    </tbody>
+</table>
+
+
+<div id="template-add" class="outline">
+    @using (Html.BeginForm("AddTask", "Task", null))
+        {
+            var t = TaskModel.Empty();
+            @Html.ValidationSummary(true)
+            <fieldset>
+                <legend>Add Task</legend>  
+             
+                <div class="input">
+                    <label class="input-label">Task Name:</label>
+                    <input class="input-elem" type="text" id="task-name"/><br/>
+                </div>
+                <div class="input">
+                    <label class="input-label">Task Description:</label>
+                    <input class="input-elem" type="text" id="task-desc"/><br/>
+                </div>
+                <div class="input">
+                    <label class="input-label">Task Starting At:</label>
+                    <input class="input-elem" type="text" id="task-start"/><br />
+                </div>
+                <div class="input">
+                    <label class="input-label">Task Duration:</label>
+                    <input class="input-elem" type="text" id="task-duration"/><br/>
+                </div>
+                <div class="input">
+                    <label class="input-label">Task Status:</label>
+                    <input class="input-elem" type="text" id="task-status"/><br/>
+                </div>
+            </fieldset>
+            <input type="submit" id="submit" value="submit"/>
+            <input type="button" id="close" value="close"/>
+        }
+</div>
+
