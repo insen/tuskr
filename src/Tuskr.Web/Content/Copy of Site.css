@@ -1,0 +1,77 @@
+﻿html {background-color: #e2e2e2; margin: 0;padding: 0;}
+.header { height: 100%;width: 100%; background-color: #c8c8c8}
+
+
+body {background-color: #fff;border-top: solid 10px #000;border-bottom: solid 10px #000;border-left: solid 10px #000;border-right: solid 10px #000;color: #333;font-size: .85em;font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;margin: 0;padding: 0;}
+
+#body {background-color: #efeeef;clear: both;padding-bottom: 35px;}
+
+.main-content {background: url("../Images/accent.png") no-repeat;padding-left: 10px;padding-top: 30px;}
+
+header {padding-top: 20px; }
+
+.site-title {color: #c8c8c8;font-family: Rockwell, Consolas, "Courier New", Courier, monospace;font-size: 2.3em;margin: 0;}
+
+table {border-collapse: collapse;border-spacing: 0;margin-top: 0.75em;border: 1px solid black;}
+
+th {font-size: 1.2em;text-align: left;border: none 0px;padding-left: 0;}
+
+th a {display: block;position: relative;}
+
+th a:link, th a:visited, th a:active, th a:hover {color: #333;font-weight: 600;text-decoration: none;padding: 0;}
+
+th a:hover {color: #000;}
+
+th.asc a, th.desc a {margin-right: .75em;}
+
+th.asc a:after, th.desc a:after {display: block;position: absolute;right: 0em;top: 0;font-size: 0.75em;}
+
+th.asc a:after {content: '▲';}
+
+th.desc a:after {content: '▼';}
+
+td {padding: 0.25em 2em 0.25em 0em;border: 0 none;}
+
+tr.pager td {padding: 0 0.25em 0 0;}
+
+footer .float-left, footer .float-right {float: none;}
+
+footer { text-align: center; height: auto; padding: 10px 0; }
+
+footer p { margin: 0; }
+
+ul#menu {font-size: 1.3em;font-weight: 600;margin: 0 0 5px;padding: 0;text-align: right;}
+
+ul#menu li {display: inline;list-style: none;padding-left: 15px;}
+
+ul#menu li a {background: none;color: #999;text-decoration: none;}
+
+ul#menu li a:hover {color: #333;text-decoration: none;}
+
+.float-left {float: left;}
+
+.float-right {float: right;}
+
+
+
+.image-link {width:50px;height:50px;}
+
+a.classname{background: url(../Images/signup.jpg);display: inline-block;width: 50px;height: 50px;text-indent: -9999px; /* hides the link text */}
+
+.task-table {width: 100%;text-align: center;}
+
+.task-id {display: table-column}
+
+.task-name {width:10%}
+
+.task-Desc {width:60%}
+
+.task-start {width:10%}
+
+.task-duration {width:10%}
+
+.task-stat {width: 10%;}
+
+.bordered {border: 1px solid black;}
+
+.hide {display: none;}

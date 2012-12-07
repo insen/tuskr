@@ -1,0 +1,22 @@
+﻿@using Tuskr.Web.Models
+@model TaskModel
+
+@{
+    ViewBag.Title = "add task";
+}
+
+<div id="task-template" class="task-template">
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>some legend</legend>
+            @Html.LabelFor(m => m.Id)
+            @Html.DisplayFor(m => m.Name)
+            @Html.DisplayFor(m => m.Description)
+            @Html.DisplayFor(m =>m.StartDate)
+            @Html.DisplayFor(m => m.Duration)
+            @Html.DisplayFor(m => m.Status)
+            <input type="submit" value="Submit" />
+        </fieldset>
+    }
+</div>
