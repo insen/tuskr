@@ -1,0 +1,60 @@
+﻿@using Tuskr.Data.Entities
+@using Tuskr.Web.Models
+@model IEnumerable<TaskModel>
+
+@{
+    ViewBag.Title = "Swim lane view";
+}
+
+@helper RenderTask(TaskModel tm)
+{
+    <div id="@tm.Id" class="task-wall-item bordered">
+        <div class="t-main">@tm.Name</div>
+        <div class="t-desc">@tm.Description</div>
+        <div class="t-start hide">@tm.StartDate</div>
+        <div class="t-duration hide">@tm.Duration</div>
+        <div class="t-status hide">@tm.Status</div>
+    </div>
+}
+
+@helper RenderSwimLane(IGrouping<TaskStatus,TaskModel> items, int noOfLanes)
+{
+    var percent = 100 / noOfLanes;
+    if (items.Any())
+    {
+        <div id="@items.Key" class="col outline task-wall-container">
+            <div class="lane-label">
+                <em>@items.Key</em>
+                @foreach (var item in items)
+                {
+                    @RenderTask(item)
+                }
+            </div>
+        </div>
+    }
+}
+
+@helper RenderPool() {
+    IEnumerable<IGrouping<TaskStatus, TaskModel>> groupBy = Model.GroupBy(t => t.Status);
+    var count = groupBy.ToArray().Count();
+    
+    foreach (var grouping in groupBy)
+    {
+        @RenderSwimLane(grouping, count)
+    }
+}
+
+
+@section featured
+{
+    @Html.Partial("_TaskMenu")
+}
+
+@section Scripts
+{
+    <script type="text/javascript" src="@Url.Content("/Scripts/View_Scripts/Task/ShowWall.js")"></script>    
+}
+
+<div id="pool" class="bordered center">
+    @RenderPool()
+</div>

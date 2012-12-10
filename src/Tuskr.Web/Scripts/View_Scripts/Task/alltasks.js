@@ -1,7 +1,7 @@
 ﻿window.tuskr = window.tuskr || {};
 
 
-(function (alltasks, $, undefined) {
+(function (AllTasks, $, undefined) {
     var dlgopts = {
         dialogClass: 'opaque',
         height: 'auto',
@@ -11,23 +11,23 @@
         autoOpen: false,
         closeOnEscape: false,
         open: function() {
-            window.tuskr.addTask.init(alltasks, $('#template-add'));
+            window.tuskr.addTask.init(AllTasks, $('#template-add'));
         }
     };
 
-    alltasks.resume = function() {
+    AllTasks.resume = function() {
         $('.b-data').show();
     };
     
-    alltasks.suspend = function () {
+    AllTasks.suspend = function () {
         $('.b-data').hide();
     };
 
-    alltasks.init = function () {
-        $('.b-hdr .icon').click(function () {
+    AllTasks.init = function () {
+        $('.b-hdr .add').click(function () {
             $('#template-add').dialog(dlgopts);
             $('#template-add').dialog('open');
-            alltasks.suspend();
+            AllTasks.suspend();
         });
         
         $('.task-gp-hdr').click(function () {
@@ -38,9 +38,9 @@
             return false;
         });
     };
-}(window.tuskr.allTasks = window.tuskr.allTasks || {}, jQuery));
+}(window.tuskr.AllTasks = window.tuskr.AllTasks || {}, jQuery));
 
 
 $(document).ready(function () {
-    window.tuskr.allTasks.init();
+    window.tuskr.AllTasks.init();
 });

@@ -3,7 +3,6 @@
 (function (addTask, $, undefined) {
     addTask.init = function (callee, $dialog) {
         $('#submit', $dialog).click(function (e) {
-//            $('form').submit();
             e.preventDefault();
             var $this = $('form');
 
@@ -12,7 +11,6 @@
                 type: $this.attr('method'),
                 data: $this.serialize(),
                 success: function (output) {
-                    // return output;
                     alert(output);
                 },
                 error: function() {

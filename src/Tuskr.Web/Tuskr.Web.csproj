@@ -262,6 +262,7 @@
     <Content Include="Images\add.png" />
     <Content Include="Images\edit.png" />
     <Content Include="Images\signup.jpg" />
+    <Content Include="Images\swim-lane.png" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -280,6 +281,7 @@
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\View_Scripts\Task\AddTask.js" />
     <Content Include="Scripts\View_Scripts\Task\AllTasks.js" />
+    <Content Include="Scripts\View_Scripts\Task\ShowWall.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -320,6 +322,8 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Task\All.cshtml" />
     <Content Include="Views\Task\AddView.cshtml" />
+    <Content Include="Views\Task\ShowWall.cshtml" />
+    <Content Include="Views\Task\_TaskMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

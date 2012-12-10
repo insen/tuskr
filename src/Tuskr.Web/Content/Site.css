@@ -27,3 +27,9 @@ ul li a:hover {color: #333;text-decoration: none;}
 .input-elem{margin-left:4px;float:left;}
 
 .opaque{ background: whitesmoke; opacity:0.9;}
+.col { width: 24.8%;float: left;}
+.bordered { border: 1px solid red;}
+.center{ margin-left: auto; margin-top: auto}
+
+.task-wall-item { background-color: gold;}
+.task-wall-container { background-color: darkgoldenrod;}

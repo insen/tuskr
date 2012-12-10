@@ -39,16 +39,7 @@
 
 @section featured
 {
-    <div class="task-menu outline">
-        <nav>
-            <a href="#">
-                <img src="@Url.Content("~/Images/add.png")" class="icon" />
-            </a>
-            <a href="#">
-                <img src="@Url.Content("~/Images/edit.png")" class="icon" />
-            </a>
-        </nav>
-    </div>
+    @Html.Partial("_TaskMenu")
 }
 
 @section scripts
