@@ -3,31 +3,28 @@
 window.tuskr.ShowWall = function () {
     var srcContainer = {};
 
-    var onFail = function(ev, ui) {
-        alert('error');
-//        ui.draggable.animate(uipos, "slow");
-        srcContainer.append(ui.draggable);
-    };
-
-    var onPass = function (ui, sink) {
-        sink.append(ui.draggable);
-    };
-
-    var tryUpdate = function (ui, sink, ev, pass, fail) {
-        var draggedId = $(ui.draggable).attr('id');
-        var droppedStatus = $('em', sink).text();
-        var data = '{id:' + draggedId + ',status=' + droppedStatus + '}';
+    var post = function (ui, sink) {
+        var itemkey = $(ui.draggable).attr('id');
+        var itemStatus = $('em', sink).text();
 
         $.ajax({
-            url: '/Task/Edit',
-            type: 'post',
-            data: data,
-            success: pass(ui, sink),
-            failure: fail(ev, ui)
+            url: '/Task/EditStatus',
+            type: 'POST',
+            dataType: 'json',
+            async: true,
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify({ Id: itemkey, Status: itemStatus }),
+            success: function () {
+                alert("ok");
+                sink.append(ui.draggable);
+            },
+            failure: function () {
+                alert("fail");
+                srcContainer.append(ui.draggable);
+            }
         });
-        
     };
-    
+
     var isAllowed = function(ui, sink) {
         var from = $('div.t-status', ui.draggable).text();
         var to = $('em', sink).text();
@@ -37,27 +34,29 @@ window.tuskr.ShowWall = function () {
         return true;
     };
 
-    this.init = function () {
+    this.init = function() {
         $('div.task-wall-item').each(function() {
             $(this).draggable({
                 revert: true,
-                start: function (ev, ui) {
+                start: function(ev, ui) {
                     srcContainer = $(ui.helper).parents().closest('div.lane-label');
                 }
             });
         });
 
-        $('div.task-wall-container').each(function () {
+        $('div.task-wall-container').each(function() {
             $(this).droppable({
                 //tolerance: 'touch',
-                drop: function (ev, ui) {
+                drop: function(ev, ui) {
                     var sink = $(this);
-                    if (isAllowed(ui, sink)) {
-                        tryUpdate(ui, sink, ev, onPass, onFail);
-                    } else {
+
+                    if (!isAllowed(ui, sink)) {
                         alert("transition not allowed");
+                        return;
                     }
-                    return true;
+
+                    sink.append(ui.draggable);
+                    post(ui, sink);
                 }
             });
         });

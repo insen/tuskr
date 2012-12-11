@@ -1,18 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using NHibernate;
 using NHibernate.Linq;
+using Spring.Transaction.Interceptor;
 using Tuskr.Data.Infrastructure;
 
 namespace Tuskr.Data.NHibernate
 {
+    [Transaction()]
     public class RepoBase<T> : IRepo<T> where T : class
     {
         private readonly ISession _session;
 
-        public RepoBase(ISessionFactory session)
+        public RepoBase(ISessionFactory sessionFactory)
         {
-            _session = session.OpenSession();
+//            _session = sessionFactory.OpenSession();
+            _session = sessionFactory.GetCurrentSession();
+            _session.FlushMode = FlushMode.Auto;
         }
 
         public bool Add(T entity)

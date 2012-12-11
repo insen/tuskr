@@ -1,8 +1,8 @@
+using System;
 using System.Linq;
 using System.Web.Mvc;
 using Tuskr.Data.Entities;
 using Tuskr.Data.Infrastructure;
-using Tuskr.Data.NHibernate;
 using Tuskr.Web.Models;
 
 
@@ -10,16 +10,16 @@ namespace Tuskr.Web.Controllers
 {
     public class TaskController : Controller
     {
-        private readonly IRepo<Task> _tasks;
+        private readonly IRepo<Task> _tasksRepo;
 
         public TaskController(IRepo<Task> repo)
         {
-            this._tasks = repo;
+            _tasksRepo = repo;
         }
 
         public ActionResult All()
         {
-            return View(_tasks.All().Select(e => new TaskModel(e)));
+            return View(_tasksRepo.All().Select(e => new TaskModel(e)));
         }
 
         public ActionResult AddView()
@@ -29,7 +29,7 @@ namespace Tuskr.Web.Controllers
 
         public ActionResult AddTask(TaskModel model)
         {
-            _tasks.Add(new Task
+            _tasksRepo.Add(new Task
                 {
                     Name = model.Name,
                     Description = model.Description,
@@ -43,16 +43,22 @@ namespace Tuskr.Web.Controllers
 
         public ActionResult ShowWall()
         {
-            return View(_tasks.All().Select(e => new TaskModel(e)));
+            return View(_tasksRepo.All().Select(e => new TaskModel(e)));
         }
 
-        public ActionResult Edit(TaskModel model)
+        public ActionResult EditStatus(TaskModel model)
         {
-            throw new HttpAntiForgeryException("bloddy erropr");
-            var task = _tasks.FilterBy(t => t.Id == model.Id).FirstOrDefault();
-            task.Status = model.Status;
-            return RedirectToAction("ShowWall", "Task");
+            try
+            {
+                var task = _tasksRepo.FindBy(t => t.Id == model.Id);
+                task.Status = model.Status;
+                _tasksRepo.Update(task);
+                return Json(new {success = true, results = "ok"});
+            }
+            catch (Exception e)
+            {
+                return Json(new {success = false, results = e.Message});
+            }
         }
     }
-
 }

@@ -27,7 +27,7 @@
         <entry key="hibernate.connection.provider" value="NHibernate.Connection.DriverConnectionProvider"/>
         <entry key="dialect" value="NHibernate.Dialect.MsSql2005Dialect"/>
         <entry key="connection.driver_class" value="NHibernate.Driver.SqlClientDriver"/>
-        <entry key="show_sql" value="false" />
+        <entry key="show_sql" value="true" />
       </dictionary>
     </property>
     
@@ -36,7 +36,7 @@
   </object>
   
   
-  <object id="Task" type="Tuskr.Web.Controllers.TaskController, Tuskr.Web" singleton="false" >
+  <object id="Task" type="Tuskr.Web.Controllers.TaskController, Tuskr.Web" scope="request">
     <constructor-arg ref="TaskRepo" />
   </object>
   

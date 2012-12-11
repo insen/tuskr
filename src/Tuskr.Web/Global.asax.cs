@@ -1,11 +1,9 @@
-﻿using System;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Spring.Context;
-using Spring.Context.Support;
 using Spring.Web.Mvc;
+using Tuskr.Web.App_Start;
 
 namespace Tuskr.Web
 {
@@ -21,6 +19,7 @@ namespace Tuskr.Web
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+            Log4NetConfig.RegisterLog4NetConfig();
         }
     }
 }
