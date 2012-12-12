@@ -10,16 +10,24 @@
 {
     <div id="@tm.Id" class="task-wall-item bordered">
         <div class="t-main">@tm.Name</div>
+        <div class="t-main hide"><input class="t-main input" type="text" value="@tm.Name"/></div>
         <div class="t-desc">@tm.Description</div>
+        <div class="t-desc hide"><input class="t-desc input" type="text" value="@tm.Description"/></div>
         <div class="t-start hide">@tm.StartDate</div>
+        <div class="t-start hide"><input class="t-start input" type="text" value="@tm.StartDate"/></div>
         <div class="t-duration hide">@tm.Duration</div>
+        <div class="t-duration hide"><input class="t-start input" type="text" value="@tm.Duration"/></div>
         <div class="t-status hide">@tm.Status</div>
+        <div class="t-status hide"><input class="t-status input" type="text" value="@tm.Status"/></div>
+        <div class="t-options">
+            <a href="#" >Percent Complete</a>
+            <a href="#" class="t-edit">Edit</a>
+        </div>
     </div>
 }
 
 @helper RenderSwimLane(IGrouping<TaskStatus,TaskModel> items, int noOfLanes)
 {
-    var percent = 100 / noOfLanes;
     if (items.Any())
     {
         <div id="@items.Key" class="col outline task-wall-container">

@@ -1,7 +1,7 @@
-﻿html {margin: 0;padding: 0;width: 99pc;height: 50pc;}
+﻿html {width: 99%;height: 100%;}
 .bgclr {background-color: #e2e2e2}
 
-.outline {border-style: solid;border-width: 1px;border-color: #800000;}
+.outline {margin: 1px;padding: 1px; border: 1px solid #800000;}
 
 .hd { height: 7pc; position: relative;top: 0; left:0}
 .site-title {color: #333;font-family: Rockwell, Consolas, "Courier New", Courier, monospace;font-size: 2.3em;margin: 1px;}
@@ -10,8 +10,8 @@ ul {font-size: 1.5em;font-weight: 600;margin: 0 0 5px;padding: 0;text-align: rig
 ul li {display: inline;list-style: none;padding-left: 15px;}
 ul li a {background: none;color: #999;text-decoration: none;}
 ul li a:hover {color: #333;text-decoration: none;}
-.icon { width: 50px; height:50px}
 
+.icon { width: 50px; height:50px}
 .bd { height: 30pc;overflow: hidden; position: relative;top: 0; left:0}
 .b-hdr{ height: 5pc;}
 .b-data{ height: 25pc;}
@@ -27,9 +27,9 @@ ul li a:hover {color: #333;text-decoration: none;}
 .input-elem{margin-left:4px;float:left;}
 
 .opaque{ background: whitesmoke; opacity:0.9;}
-.col { width: 24.8%;float: left;}
+.col { width: 24.6%;float: left;}
 .bordered { border: 1px solid red;}
 .center{ margin-left: auto; margin-top: auto}
 
-.task-wall-item { background-color: gold;}
+.task-wall-item { background-color: bisque;}
 .task-wall-container { background-color: darkgoldenrod;}

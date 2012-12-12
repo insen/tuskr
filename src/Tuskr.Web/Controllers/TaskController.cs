@@ -60,5 +60,24 @@ namespace Tuskr.Web.Controllers
                 return Json(new {success = false, results = e.Message});
             }
         }
+
+        public ActionResult Edit(TaskModel model)
+        {
+            try
+            {
+                var task = _tasksRepo.FindBy(t => t.Id == model.Id);
+                task.Name = model.Name;
+                task.Description = model.Description;
+                task.Duration = model.Duration;
+                task.StartDate = model.StartDate;
+                task.Status = model.Status;
+                _tasksRepo.Update(task);
+                return Json(new {success = true, results = "ok"});
+            }
+            catch (Exception e)
+            {
+                return Json(new {success = false, results = e.Message});
+            }
+        }
     }
 }

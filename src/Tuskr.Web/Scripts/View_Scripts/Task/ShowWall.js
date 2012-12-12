@@ -3,7 +3,7 @@
 window.tuskr.ShowWall = function () {
     var srcContainer = {};
 
-    var post = function (ui, sink) {
+    var postStatusChanges = function (ui, sink) {
         var itemkey = $(ui.draggable).attr('id');
         var itemStatus = $('em', sink).text();
 
@@ -32,7 +32,91 @@ window.tuskr.ShowWall = function () {
         return true;
     };
 
-    this.init = function() {
+    var toTask = function ($elem) {
+        var task = {};
+        var $sources = $elem.find('input');
+        
+        task.Id = $elem.attr('id');
+        task.Name = $sources.filter('.t-main').val();
+        task.Description = $sources.filter('.t-desc').val();
+        task.StartDate = $sources.filter('.t-start').val();
+        task.Duration = $sources.filter('.t-duration').val();
+        task.Status = $sources.filter('.t-status').val();
+
+        return task;
+    };
+
+    var updateUi = function($taskDiv, task) {
+        var $targets = $taskDiv.find('>div:not(:has(> .input))');
+
+        $targets.filter('.t-main').text(task.Name);
+        $targets.filter('.t-desc').text(task.Description);
+        $targets.filter('.t-start').text(task.StartDate);
+        $targets.filter('.t-duration').text(task.Duration);
+        $targets.filter('.t-status').text(task.Status);
+    };
+
+    var postEdit = function ($elem) {
+        var $taskDiv = $elem.parent().parent();
+        var task = toTask($taskDiv);
+
+        $.ajax({
+            url: '/Task/Edit',
+            type: 'POST',
+            dataType: 'json',
+            async: true,
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(task),
+            success: function () {
+                toggleShowHide($elem.parent().siblings());
+                setupForEdit($elem);
+                updateUi($taskDiv, task);
+            },
+            failure: function () {
+                alert('fail');
+            }
+        });
+    };
+
+    var toggleShowHide = function ($elements) {
+        var $hiddens = $elements.filter('.hide');
+        var $visibles = $elements.not('.hide');
+        
+        $hiddens.each(function() {
+            $(this).removeClass('hide').addClass('show');
+        });
+        
+        $visibles.each(function () {
+            $(this).removeClass('show').addClass('hide');
+        });
+    };
+
+    var setupForEdit = function ($elem) {
+        $elem.text("Edit");
+        $elem.off('click');
+        
+        $elem.click(function() {
+            toggleShowHide($(this).parent().siblings());
+            setupForSave($(this));
+            
+        });
+    };
+
+    var setupForSave = function ($elem) {
+        $elem.removeClass('t-edit').addClass('t-save');
+        $elem.text("Save");
+        $elem.off('click');
+        
+        $elem.click(function () {
+            postEdit($elem);
+        });
+    };
+    
+    this.init = function () {
+        $('div.t-options').children('.t-edit').each(function() {
+            setupForEdit($(this));
+        });
+        
         $('div.task-wall-item').each(function() {
             $(this).draggable({
                 revert: true,
@@ -45,7 +129,6 @@ window.tuskr.ShowWall = function () {
 
         $('div.task-wall-container').each(function() {
             $(this).droppable({
-                //tolerance: 'touch',
                 drop: function(ev, ui) {
                     var sink = $(this);
 
@@ -55,7 +138,7 @@ window.tuskr.ShowWall = function () {
                     }
 
                     sink.append(ui.draggable);
-                    post(ui, sink);
+                    postStatusChanges(ui, sink);
                 }
             });
         });
