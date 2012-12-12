@@ -15,9 +15,8 @@ namespace Tuskr.Data.NHibernate
 
         public RepoBase(ISessionFactory sessionFactory)
         {
-//            _session = sessionFactory.OpenSession();
             _session = sessionFactory.GetCurrentSession();
-            _session.FlushMode = FlushMode.Auto;
+//            _session.FlushMode = FlushMode.Auto;
         }
 
         public bool Add(T entity)

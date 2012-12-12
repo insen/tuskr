@@ -15,11 +15,9 @@ window.tuskr.ShowWall = function () {
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify({ Id: itemkey, Status: itemStatus }),
             success: function () {
-                alert("ok");
                 sink.append(ui.draggable);
             },
             failure: function () {
-                alert("fail");
                 srcContainer.append(ui.draggable);
             }
         });
@@ -39,7 +37,8 @@ window.tuskr.ShowWall = function () {
             $(this).draggable({
                 revert: true,
                 start: function(ev, ui) {
-                    srcContainer = $(ui.helper).parents().closest('div.lane-label');
+                    var parents = $(ui.helper).parents();
+                    srcContainer = parents.closest('div.lane-label');
                 }
             });
         });
