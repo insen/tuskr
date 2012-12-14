@@ -23,7 +23,7 @@ namespace Tuskr.Web.Tests.Controllers
             repo.All().Returns(new[] {new Task{Name = "One"}}.AsQueryable());
 
             var tc = new TaskController(repo);
-            var result = tc.All() as ViewResult;
+            var result = tc.ShowTable() as ViewResult;
 
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.Model);

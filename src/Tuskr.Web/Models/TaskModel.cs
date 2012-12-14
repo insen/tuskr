@@ -30,10 +30,5 @@ namespace Tuskr.Web.Models
         public TaskModel()
         {
         }
-
-        public static TaskModel Empty()
-        {
-            return new TaskModel();
-        }
     }
 }

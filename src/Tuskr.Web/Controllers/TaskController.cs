@@ -17,15 +17,22 @@ namespace Tuskr.Web.Controllers
             _tasksRepo = repo;
         }
 
-        public ActionResult All()
+        private IQueryable<TaskModel> SelectAllTasks()
+        {
+            return _tasksRepo.All().Select(e => new TaskModel(e));
+        }
+
+
+        public ActionResult ShowTable()
+        {
+            return View(SelectAllTasks());
+        }
+
+        public ActionResult ShowWall()
         {
             return View(_tasksRepo.All().Select(e => new TaskModel(e)));
         }
 
-        public ActionResult AddView()
-        {
-            return View(TaskModel.Empty());
-        }
 
         public ActionResult AddTask(TaskModel model)
         {
@@ -38,12 +45,7 @@ namespace Tuskr.Web.Controllers
                     Status = model.Status
                 });
 
-            return RedirectToAction("All");
-        }
-
-        public ActionResult ShowWall()
-        {
-            return View(_tasksRepo.All().Select(e => new TaskModel(e)));
+            return RedirectToAction("ShowTable");
         }
 
         public ActionResult EditStatus(TaskModel model)
@@ -61,7 +63,7 @@ namespace Tuskr.Web.Controllers
             }
         }
 
-        public ActionResult Edit(TaskModel model)
+        public ActionResult EditTask(TaskModel model)
         {
             try
             {

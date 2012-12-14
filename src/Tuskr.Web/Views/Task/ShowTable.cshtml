@@ -37,16 +37,14 @@
     }
 }
 
-@section featured
+@section content_header
 {
-    @Html.Partial("_TaskMenu")
+    @Html.Partial("Partials/_Task_Header")
 }
 
 @section scripts
 {
-    <script type="text/javascript" src="@Url.Content("/Scripts/View_Scripts/Task/alltasks.js")"></script>
-    <script type="text/javascript" src="@Url.Content("/Scripts/View_Scripts/Task/AddTask.js")"></script>
-    
+    <script type="text/javascript" src="@Url.Content("/Scripts/View_Scripts/Task/ShowTable.js")"></script>
 }
 
 <table id="tasks" class="task-table bordered">
@@ -79,37 +77,5 @@
     </tbody>
 </table>
 
-<div id="template-add" class="hide outline">
-    @using (Html.BeginForm("AddTask", "Task", null))
-        {
-            var t = TaskModel.Empty();
-            @Html.ValidationSummary(true)
-            <fieldset>
-                <legend>Add Task</legend>  
-             
-                <div class="input">
-                    <label class="input-label">Task Name:</label>
-                    <input class="input-elem" type="text" id="task-name" name="Name"/><br/>
-                </div>
-                <div class="input">
-                    <label class="input-label">Task Description:</label>
-                    <input class="input-elem" type="text" id="task-desc" name="Description"/><br/>
-                </div>
-                <div class="input">
-                    <label class="input-label">Task Starting At:</label>
-                    <input class="input-elem" type="text" id="task-start" name="StartDate"/><br />
-                </div>
-                <div class="input">
-                    <label class="input-label">Task Duration:</label>
-                    <input class="input-elem" type="text" id="task-duration" name="Duration"/><br/>
-                </div>
-                <div class="input">
-                    <label class="input-label">Task Status:</label>
-                    <input class="input-elem" type="text" id="task-status" name="Status"/><br/>
-                </div>
-            </fieldset>
-            <input type="submit" id="submit" value="submit"/>
-            <input type="button" id="close" value="close"/>
-        }
-</div>
+
 

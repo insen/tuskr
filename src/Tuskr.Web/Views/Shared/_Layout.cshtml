@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Tuskr.Web.Helpers
+<!DOCTYPE html>
 <html lang="en" class="outline">
     <head class="outline">
         <meta charset="utf-8" />
@@ -6,10 +7,10 @@
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/themes/base/css")
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
-        <div id="dialog" class="hide"></div>
         
         <div class="hd bgclr outline">
             <header>
@@ -25,7 +26,7 @@
                     <nav>
                         <ul id="menu">
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Tasks", "All", "Task")</li>
+                            <li>@Html.ActionLink("Tasks", "ShowTable", "Task")</li>
                         </ul>
                     </nav>
                 </div>
@@ -35,7 +36,7 @@
         
         <div id="body" class="bd bgclr outline">
             <div class="b-hdr outline">
-                @RenderSection("featured", required: false)
+                @RenderSection("content_header", required: false)
             </div>
             <div class="b-data outline">
                 @RenderBody()
@@ -50,8 +51,11 @@
         </footer>
 
         @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/Scripts/jquery-ui-1.8.20.js")
-        @Scripts.Render("~/")
+        @Scripts.Render("~/bundles/jqueryui")
+        @Scripts.Render("~/bundles/jqueryval")
+        @*@Scripts.Render("~/")*@
+        @Html.EmitRequiredScripts()
+
         @RenderSection("scripts", required: false)
     </body>
     

@@ -1,0 +1,24 @@
+﻿@using Tuskr.Web.Helpers
+@using Tuskr.Web.Models
+
+@model TaskModel
+
+@Html.RequireScript("/Scripts/View_Scripts/Task/Task.js")
+
+<div id="@Model.Id" class="task-wall-item bordered">
+    <div class="t-main">@Model.Name</div>
+    <div class="t-main hide"><input class="t-main input" type="text" value="@Model.Name"/></div>
+    <div class="t-desc">@Model.Description</div>
+    <div class="t-desc hide"><input class="t-desc input" type="text" value="@Model.Description"/></div>
+    <div class="t-start hide">@Model.StartDate</div>
+    <div class="t-start hide"><input class="t-start input" type="text" value="@Model.StartDate"/></div>
+    <div class="t-duration hide">@Model.Duration</div>
+    <div class="t-duration hide"><input class="t-start input" type="text" value="@Model.Duration"/></div>
+    <div class="t-status hide">@Model.Status</div>
+    <div class="t-status hide"><input class="t-status input" type="text" value="@Model.Status"/></div>
+    <div class="t-options">
+        <a href="#" >Percent Complete</a>
+        <a href="#" class="t-edit">Edit</a>
+    </div>
+</div>
+        

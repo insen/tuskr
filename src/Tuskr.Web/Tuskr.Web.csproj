@@ -199,6 +199,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\IncludeScriptExtensions.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\TaskModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -284,9 +285,10 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Scripts\View_Scripts\Task\AddTask.js" />
-    <Content Include="Scripts\View_Scripts\Task\AllTasks.js" />
+    <Content Include="Scripts\View_Scripts\Task\ShowTable.js" />
     <Content Include="Scripts\View_Scripts\Task\ShowWall.js" />
+    <Content Include="Scripts\View_Scripts\Task\Task.js" />
+    <Content Include="Scripts\View_Scripts\Task\TaskHeader.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -325,14 +327,13 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Task\All.cshtml" />
-    <Content Include="Views\Task\AddView.cshtml" />
+    <Content Include="Views\Task\ShowTable.cshtml" />
     <Content Include="Views\Task\ShowWall.cshtml" />
-    <Content Include="Views\Task\_TaskMenu.cshtml" />
+    <Content Include="Views\Task\Partials\_Task_Header.cshtml" />
+    <Content Include="Views\Task\Partials\_Task.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Helpers\" />
     <Folder Include="Logs\" />
   </ItemGroup>
   <ItemGroup>

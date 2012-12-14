@@ -1,0 +1,47 @@
+﻿@using Tuskr.Web.Helpers
+
+@Html.RequireScript("/Scripts/View_Scripts/Task/TaskHeader.js")
+
+<div class="task-menu outline">
+    <nav>
+        <a href="#">
+            <img id="lnk-add-task" src="@Url.Content("~/Images/add.png")" class="icon add" />
+        </a>
+        <a href="@Url.Action("ShowWall", "Task")">
+            <img id="lnk-swim" src="@Url.Content("~/Images/swim-lane.png")" class="icon swim" />
+        </a>
+    </nav>
+</div>
+
+<div id="template-add" class="hide outline">
+    @using (Html.BeginForm("AddTask", "Task", null))
+    {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>Add Task</legend>  
+             
+            <div class="input">
+                <label class="input-label">Task Name:</label>
+                <input class="input-elem" type="text" id="task-name" name="Name"/><br/>
+            </div>
+            <div class="input">
+                <label class="input-label">Task Description:</label>
+                <input class="input-elem" type="text" id="task-desc" name="Description"/><br/>
+            </div>
+            <div class="input">
+                <label class="input-label">Task Starting At:</label>
+                <input class="input-elem" type="text" id="task-start" name="StartDate"/><br />
+            </div>
+            <div class="input">
+                <label class="input-label">Task Duration:</label>
+                <input class="input-elem" type="text" id="task-duration" name="Duration"/><br/>
+            </div>
+            <div class="input">
+                <label class="input-label">Task Status:</label>
+                <input class="input-elem" type="text" id="task-status" name="Status"/><br/>
+            </div>
+        </fieldset>
+        <input type="button" id="submit" value="submit"/>
+        <input type="button" id="close" value="close"/>
+    }
+</div>
