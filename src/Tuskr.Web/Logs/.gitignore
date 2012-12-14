@@ -1,0 +1,7 @@
+# ignore everything in this directory
+*
+#this is the most common git method to track an empty directory only. 
+#my sln has the folder added to it and hence fails to compile when checked out 
+#on another machine, or includes all log files into the repo.
+#except for the following file
+!.gitignore
