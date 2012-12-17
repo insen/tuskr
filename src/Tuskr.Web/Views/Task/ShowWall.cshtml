@@ -1,5 +1,6 @@
 ﻿@using Tuskr.Data.Entities
 @using Tuskr.Web.Models
+
 @model IEnumerable<TaskModel>
 
 @{
@@ -9,62 +10,40 @@
 @helper RenderTask(TaskModel tm)
 {
     @Html.Partial("Partials/_Task", tm)
-@*    <div id="@tm.Id" class="task-wall-item bordered">*@
-@*        <div class="t-main">@tm.Name</div>*@
-@*        <div class="t-main hide"><input class="t-main input" type="text" value="@tm.Name"/></div>*@
-@*        <div class="t-desc">@tm.Description</div>*@
-@*        <div class="t-desc hide"><input class="t-desc input" type="text" value="@tm.Description"/></div>*@
-@*        <div class="t-start hide">@tm.StartDate</div>*@
-@*        <div class="t-start hide"><input class="t-start input" type="text" value="@tm.StartDate"/></div>*@
-@*        <div class="t-duration hide">@tm.Duration</div>*@
-@*        <div class="t-duration hide"><input class="t-start input" type="text" value="@tm.Duration"/></div>*@
-@*        <div class="t-status hide">@tm.Status</div>*@
-@*        <div class="t-status hide"><input class="t-status input" type="text" value="@tm.Status"/></div>*@
-@*        <div class="t-options">*@
-@*            <a href="#" >Percent Complete</a>*@
-@*            <a href="#" class="t-edit">Edit</a>*@
-@*        </div>*@
-@*    </div>*@
 }
 
-@helper RenderSwimLane(IGrouping<TaskStatus,TaskModel> items, int noOfLanes)
+@helper RenderSwimLane(IEnumerable<TaskModel> tasks, string taskStatus)
 {
-    if (items.Any())
-    {
-        <div id="@items.Key" class="col outline task-wall-container">
-            <div class="lane-label">
-                <em>@items.Key</em>
-                @foreach (var item in items)
-                {
-                    @RenderTask(item)
-                }
-            </div>
+    <div id="@taskStatus" class="t-group c-txt col ctr outline">
+        @if (tasks.Any())
+        {
+        <div class="lane-label"><em>@taskStatus</em>
+            @foreach (var item in tasks)
+            {
+                @RenderTask(item)
+            }
         </div>
-    }
+        }
+    </div>
 }
 
 @helper RenderPool() {
-    IEnumerable<IGrouping<TaskStatus, TaskModel>> groupBy = Model.GroupBy(t => t.Status);
-    var count = groupBy.ToArray().Count();
-    
-    foreach (var grouping in groupBy)
-    {
-        @RenderSwimLane(grouping, count)
-    }
+    @RenderSwimLane(Model.Where(tm => tm.Status == TaskStatus.Undefined), TaskStatus.Undefined.ToString())
+    @RenderSwimLane(Model.Where(tm => tm.Status == TaskStatus.WaitStart), TaskStatus.WaitStart.ToString())
+    @RenderSwimLane(Model.Where(tm => tm.Status == TaskStatus.Active), TaskStatus.Active.ToString())
+    @RenderSwimLane(Model.Where(tm => tm.Status == TaskStatus.Done), TaskStatus.Done.ToString())
 }
-
 
 @section content_header
 {
     @Html.Partial("Partials/_Task_Header")
 }
 
-
 @section Scripts
 {
     <script type="text/javascript" src="@Url.Content("/Scripts/View_Scripts/Task/ShowWall.js")"></script>    
 }
 
-<div id="pool" class="bordered center">
+<div id="pool" class="ctr" >
     @RenderPool()
 </div>

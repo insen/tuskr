@@ -14,15 +14,15 @@
         
         <div class="hd bgclr outline">
             <header>
-                <div class="f-left outline">
+                <div class="f-left ">
                     <p>@Html.ActionLink("tuskr", "Index", "Home", null, new {@class="site-title"})</p>
                 </div>
-                <div class="f-right outline">
+                <div class="f-right ">
                     <a href="@Url.Action("Index", "Home")">
                         <img src="@Url.Content("~/Images/signup.jpg")" class="icon"/>
                     </a>
                 </div>
-                <div class="f-clear outline">
+                <div class="f-clear ">
                     <nav>
                         <ul id="menu">
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
@@ -35,10 +35,10 @@
 
         
         <div id="body" class="bd bgclr outline">
-            <div class="b-hdr outline">
+            <div class="b-hdr ">
                 @RenderSection("content_header", required: false)
             </div>
-            <div class="b-data outline">
+            <div class="b-data ">
                 @RenderBody()
             </div>
         </div>

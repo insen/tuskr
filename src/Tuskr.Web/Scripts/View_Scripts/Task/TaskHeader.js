@@ -2,7 +2,6 @@
 
 window.tuskr.taskHeader = function() {
     var dlgopts = {
-        dialogClass: 'opaque',
         height: 'auto',
         width: 400,
         modal: true,

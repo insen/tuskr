@@ -5,7 +5,12 @@
     ViewBag.Title = "all tasks";
 }
 
-@helper RenderCell(object item){ <td class="bordered">@item</td>}
+
+
+
+
+
+@helper RenderCell(object item){ <td class="outline">@item</td>}
 
 @helper RenderDetailRow(TaskModel item, string groupId, string id) 
 {
@@ -47,24 +52,24 @@
     <script type="text/javascript" src="@Url.Content("/Scripts/View_Scripts/Task/ShowTable.js")"></script>
 }
 
-<table id="tasks" class="task-table bordered">
+<table id="tasks" class="task-table outline">
     <colgroup>
-        <col class="task-id bordered" />
-        <col class="task-name bordered" />
-        <col class="task-Desc bordered" />
-        <col class="task-start bordered" />
-        <col class="task-duration bordered" />
-        <col class="task-stat bordered" />
+        <col class="task-id outline" />
+        <col class="task-name outline" />
+        <col class="task-Desc outline" />
+        <col class="task-start outline" />
+        <col class="task-duration outline" />
+        <col class="task-stat outline" />
     </colgroup>
 
     <thead>
         <tr>
-            <th class="bordered">Id</th>
-            <th class="bordered">Name</th>
-            <th class="bordered">Description</th>
-            <th class="bordered">StartDate</th>
-            <th class="bordered">Duration</th>
-            <th class="bordered">Status</th>
+            <th class="outline">Id</th>
+            <th class="outline">Name</th>
+            <th class="outline">Description</th>
+            <th class="outline">StartDate</th>
+            <th class="outline">Duration</th>
+            <th class="outline">Status</th>
         </tr>
     </thead>
 

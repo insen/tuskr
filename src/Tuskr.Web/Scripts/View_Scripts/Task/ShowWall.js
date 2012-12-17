@@ -61,7 +61,7 @@ window.tuskr.ShowWall = function () {
         var task = toTask($taskDiv);
 
         $.ajax({
-            url: '/Task/Edit',
+            url: '/Task/EditTask',
             type: 'POST',
             dataType: 'json',
             async: true,
@@ -79,8 +79,8 @@ window.tuskr.ShowWall = function () {
     };
 
     var toggleShowHide = function ($elements) {
-        var $hiddens = $elements.filter('.hide');
-        var $visibles = $elements.not('.hide');
+        var $hiddens = $elements.find('.hide');
+        var $visibles = $elements.find('.show');
         
         $hiddens.each(function() {
             $(this).removeClass('hide').addClass('show');
@@ -96,7 +96,8 @@ window.tuskr.ShowWall = function () {
         $elem.off('click');
         
         $elem.click(function() {
-            toggleShowHide($(this).parent().siblings());
+            //toggleShowHide($(this).parent().siblings());
+            toggleShowHide($(this).parents('.t-elements'));
             setupForSave($(this));
             
         });
@@ -113,11 +114,12 @@ window.tuskr.ShowWall = function () {
     };
     
     this.init = function () {
-        $('div.t-options').children('.t-edit').each(function() {
+
+        $('div.t-options').find('.t-edit').each(function() {
             setupForEdit($(this));
         });
         
-        $('div.task-wall-item').each(function() {
+        $('div.t-elements').each(function() {
             $(this).draggable({
                 revert: true,
                 start: function(ev, ui) {
@@ -127,7 +129,7 @@ window.tuskr.ShowWall = function () {
             });
         });
 
-        $('div.task-wall-container').each(function() {
+        $('div.t-group').each(function() {
             $(this).droppable({
                 drop: function(ev, ui) {
                     var sink = $(this);
