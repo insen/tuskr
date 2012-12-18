@@ -24,28 +24,27 @@
 
 <div id="@Model.Id" class="t-elements col outline">
     <div class="t-main t-bdr odd">
-        <span class="t-view">@Model.Name</span>
+        <span class="t-view show">@Model.Name</span>
         <input class="t-edit hide" type="text" value="@Model.Name"/>
     </div>
     <div class="t-desc t-bdr even">
-        <span class="t-view">@Model.Description</span>
+        <span class="t-view show">@Model.Description</span>
         <textarea class="t-edit hide">@Model.Description</textarea>
     </div>
-    <div class="t-start t-bdr">
-        <span class="t-view">@Model.StartDate</span>
+    <div class="t-start t-bdr odd">
+        <span class="t-view show">@Model.StartDate</span>
         <input class="t-edit hide" type="text" value="@Model.StartDate"/>
     </div>
-    <div class="t-duration t-bdr">
-        <span class="t-view">@Model.Duration</span>
+    <div class="t-duration t-bdr even">
+        <span class="t-view show">@Model.Duration</span>
         <input class="t-edit hide" type="text" value="@Model.Duration"/>
     </div>
-    <div class="t-status t-bdr">
-        <span class="t-view">@Model.Status</span>
+    <div class="t-status t-bdr odd">
+        <span class="t-view show">@Model.Status</span>
         <input class="t-edit hide" type="text" value="@Model.Status"/>
     </div>
-    <div class="t-options ">
-            <span class="t-view t-bdr">{% Done}</span>
-            <a href="#" class="t-edit t-bdr">Edit</a>
+    <div class="t-options">
+        <a href="#" class="t-edit">Edit</a>
     </div>
 </div>
         

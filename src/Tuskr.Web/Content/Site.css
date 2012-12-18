@@ -1,4 +1,4 @@
-﻿html {width: 99%;}
+﻿html {width: 100%;}
 
 ul {font-size: 1.5em;font-weight: 600;margin: 0 0 1px;padding: 0;text-align: right;}
 ul li {display: inline;list-style: none;padding-left: 15px;}
@@ -8,7 +8,7 @@ ul li a:hover {color: #333;text-decoration: none;}
 .site-title {color: #800000;font-family: Rockwell, Consolas, "Courier New", Courier, monospace;font-size: 2.3em;margin: 1px;}
 .hd {width: 100%; height: 5%;}
 
-.bgclr {background-color: darkkhaki}
+.bgclr {background-color: #ddddab}
 .outline {margin: 0px;padding: 2px; border: 1px solid #800000;}
 .hide { display: none;}
 .f-left {float:left}
@@ -24,21 +24,21 @@ ul li a:hover {color: #333;text-decoration: none;}
 .icon { width: 3pc; height:3pc}
 .col { width: 24.5%;float: left;}
 
-.t-group {background-color: darkgoldenrod;display: inline-block;}
-.t-elements {width: 98%; background-color: bisque; margin: 1px}
-.t-view { width: 49%;flex-align: baseline; float: left}
-.t-edit { width: 49%;flex-align: baseline; float: right}
+.t-group {background-color: #ddd1dd;display: inline-block;}
+.t-elements {width: 98%; background-color: white; margin: 1px}
+.t-view { flex-align: baseline; width: 100%}
+.t-edit { flex-align: baseline; width:100%}
 
 .t-main { clear: both}
 .t-desc {clear: both}
 .t-start {clear: both}
 .t-duration {clear: both}
 .t-status {clear: both}
-.t-options { clear: both; }
+.t-options {}
 
 .t-bdr {border: 1px dotted #800000}
-.odd {background-color: aquamarine}
-.even {background-color: cornflowerblue}
+.odd { background-color: #DDA78A; overflow: hidden}
+.even { background-color: #86887A; overflow: hidden}
 
 
 

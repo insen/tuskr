@@ -15,6 +15,8 @@ window.tuskr.ShowWall = function () {
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify({ Id: itemkey, Status: itemStatus }),
             success: function () {
+                ui.draggable.find('> .t-status > .t-view').text(itemStatus);
+                ui.draggable.find('> .t-status > .t-edit').val(itemStatus);
                 sink.append(ui.draggable);
             },
             failure: function () {
@@ -34,14 +36,13 @@ window.tuskr.ShowWall = function () {
 
     var toTask = function ($elem) {
         var task = {};
-        var $sources = $elem.find('input');
         
         task.Id = $elem.attr('id');
-        task.Name = $sources.filter('.t-main').val();
-        task.Description = $sources.filter('.t-desc').val();
-        task.StartDate = $sources.filter('.t-start').val();
-        task.Duration = $sources.filter('.t-duration').val();
-        task.Status = $sources.filter('.t-status').val();
+        task.Name = $elem.find('.t-main > .t-edit').val();
+        task.Description = $elem.find('.t-desc > .t-edit').val();
+        task.StartDate = $elem.find('.t-start > .t-edit').val();
+        task.Duration = $elem.find('.t-duration > .t-edit').val();
+        task.Status = $elem.find('.t-status > .t-edit').val();
 
         return task;
     };
@@ -49,11 +50,11 @@ window.tuskr.ShowWall = function () {
     var updateUi = function($taskDiv, task) {
         var $targets = $taskDiv.find('>div:not(:has(> .input))');
 
-        $targets.filter('.t-main').text(task.Name);
-        $targets.filter('.t-desc').text(task.Description);
-        $targets.filter('.t-start').text(task.StartDate);
-        $targets.filter('.t-duration').text(task.Duration);
-        $targets.filter('.t-status').text(task.Status);
+        $targets.children('.t-main > .t-view').text(task.Name);
+        $targets.children('.t-desc > .t-view').text(task.Description);
+        $targets.children('.t-start > .t-view').text(task.StartDate);
+        $targets.children('.t-duration > .t-view').text(task.Duration);
+        $targets.children('.t-status > .t-view').text(task.Status);
     };
 
     var postEdit = function ($elem) {
