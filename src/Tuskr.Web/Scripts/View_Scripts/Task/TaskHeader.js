@@ -12,6 +12,20 @@ window.tuskr.taskHeader = function() {
             onDialogOpen();
         }
     };
+    
+    var onDialogOpen = function() {
+        var $dialog = $('#template-add');
+
+        $('#submit', $dialog).click(function (e) {
+            e.preventDefault();
+            postNewTask($('form'));
+        });
+
+        $('#close', $dialog).click(function() {
+            $dialog.dialog('close');
+            $('.b-data').show();
+        });
+    };
 
     var postNewTask = function ($form) {
         $.ajax({
@@ -27,21 +41,7 @@ window.tuskr.taskHeader = function() {
         });
     };
 
-    var onDialogOpen = function() {
-        var $dialog = $('#template-add');
-
-        $('#submit', $dialog).click(function (e) {
-            e.preventDefault();
-            postNewTask($('form'));
-        });
-
-        $('#close', $dialog).click(function() {
-            $dialog.dialog('close');
-            $('.b-data').show();
-        });
-    };
-
-    this.init = function() {
+    this.init = function () {
         $('.b-hdr .add').click(function() {
             $('#template-add').dialog(dlgopts);
             $('#template-add').dialog('open');

@@ -16,18 +16,18 @@ ul li a:hover {color: #333;text-decoration: none;}
 .f-clear:before{content: "";clear: both;display: block;}
 .hide-overflow {overflow:hidden;}
 .c-txt { text-align: center;}
-.ctr {margin-left: auto;margin-right: auto;}
+//.ctr {margin-left: auto;margin-right: auto;}
 .in-blk { display: inline-block;}
 
 .bd { width: 100%; display: inline-block}
 .ft {width: 100%}
-.icon { width: 3pc; height:3pc}
-.col { width: 24.5%;float: left;}
+.icon { width: 60px; height:60px}
+.col { width: 24.4%;float: left;}
 
-.t-group {background-color: #ddd1dd;display: inline-block;}
+.t-group {background-color: #ddd1dd;display: inline-block;margin: 1px;}
 .t-elements {width: 98%; background-color: white; margin: 1px}
-.t-view { flex-align: baseline; width: 100%}
-.t-edit { flex-align: baseline; width:100%}
+.t-view { flex-align: baseline; width: 98%}
+.t-edit { flex-align: baseline; width:98%}
 
 .t-main { clear: both}
 .t-desc {clear: both}
@@ -36,9 +36,6 @@ ul li a:hover {color: #333;text-decoration: none;}
 .t-status {clear: both}
 .t-options {}
 
-.t-bdr {border: 1px dotted #800000}
-.odd { background-color: #DDA78A; overflow: hidden}
-.even { background-color: #86887A; overflow: hidden}
 
 
 
